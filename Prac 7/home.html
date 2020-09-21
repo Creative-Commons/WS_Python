@@ -5,87 +5,132 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
-<body onload="get_products()">
+    <body onload="get_products()">
+        <script type="text/javascript">
+            var api_url = 'http://127.0.0.1:5000/';
 
-<h1>Product</h1>
-
-<script type="text/javascript">
-    var api_url = 'http://127.0.0.1:5000/';
-
-    /* GET REQUEST */
-    function get_products(){
-        fetch(api_url).then(response => {
-            return response.json();
-        }).then(data => {
-            //console.log(data);
-            var table = document.getElementById("product_table");
-            for(i = 0; i < data["products"].length; i++){
-                row = table.insertRow(table.rows.length);
-                for(var key in data["products"][i]){
-                    //console.log(data["products"][i][key]);
-                    cell = row.insertCell();
-                    cell.innerHTML = data["products"][i][key];
-                }
-                cell = row.insertCell();
-                cell.innerHTML = '<button onclick="delete_product(' + data["products"][i]["id"] +')" value="Delete">Delete</button>'
+            /* GET REQUEST */
+            function get_products(){
+                fetch(api_url).then(response => {
+                    return response.json();
+                }).then(data => {
+                    console.log(data);
+                    var table = document.getElementById("product_table");
+                    for(i = 0; i < data["products"].length; i++){
+                        row = table.insertRow(table.rows.length);
+                        for(var key in data["products"][i]){
+                            //console.log(data["products"][i][key]);
+                            cell = row.insertCell();
+                            cell.innerHTML = '<input class="form-group small" type="text" value="' + data["products"][i][key] + '">';
+                        }
+                        cell = row.insertCell();
+                        cell.innerHTML = '<button class="btn btn-warning" onclick="update_product(' + i +')">Update</button>'
+                        cell = row.insertCell();
+                        cell.innerHTML = '<button class="btn btn-danger" onclick="delete_product(' + data["products"][i]["id"] +')">Delete</button>'
+                    }
+                });
             }
-        });
-    }
-    
-    /* POST REQUEST */
-    function create_product(){
-        var name = document.getElementById("name");
-        var price = document.getElementById("price");
-        fetch(
-            api_url, {
-            method: "POST",
-            body: JSON.stringify({
-                name: name.value,
-                price: price.value
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
+            
+            /* POST REQUEST */
+            function create_product(){
+                var name = document.getElementById("name");
+                var price = document.getElementById("price");
+                fetch(
+                    api_url, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        name: name.value,
+                        price: price.value
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                }).then(
+                    response => response.json()
+                ).then(
+                    json => console.log(json))
             }
-        }).then(
-            response => response.json()
-        ).then(
-            json => console.log(json))
-    }
 
-    /* POST REQUEST */
-    function delete_product(id){
-        fetch(
-            api_url, {
-            method: "DELETE"
-        });
-    }
+            /* DELETE REQUEST */
+            function delete_product(id){
+                fetch(
+                    api_url, {
+                    method: "DELETE",
+                    body: JSON.stringify({
+                        id: id
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                }).then(
+                    response => response.json()
+                ).then(
+                    json => console.log(json));
+                location.reload();
+                return false;
+            }
 
+            /* PUT REQUEST */
+            function update_product(id){
+                //console.log(id);
+                table = document.getElementById("product_table");
+                var row = table.rows.item(id + 1).cells;
+                //console.log(row);
+                var id = row[0].getElementsByTagName('input')[0].value;
+                var name = row[1].getElementsByTagName('input')[0].value;
+                var price = row[2].getElementsByTagName('input')[0].value;
+                //console.log(id, name, price);
+                fetch(
+                    api_url, {
+                    method: "PUT",
+                    body: JSON.stringify({
+                        id: id,
+                        name: name,
+                        price: price
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                }).then(
+                    response => response.json()
+                ).then(
+                    json => console.log(json));
+                location.reload();
+                return false;
+            }
+        </script>
 
-
-</script>
-
-<div class="container">
-    <table id="product_table" class="table table-bordered">
-        <thead>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Price</th>
-        </thead>
-    </table>
-</div>
-<hr>
-<div class="text-center mt-5">
-    <span class="h3">Create Product</span>
-    <table class="table">
-        <form onsubmit="create_product()">
-            <tr>
-                <td><input type="text" id="name" placeholder="Enter Product Name" required></td>
-                <td><input type="number" id="price" placeholder="Enter Price" required></td>
-            <tr><td colspan="2" ><input type="submit" class="btn btn-success btn-block" value="Insert Product"></td></tr>
-            </tr>
-        </form>
-    </table>
-</div>
-
-</body>
+        <div class="container">
+            <div class="mt-5">
+                <h1>Product</h1>
+                <hr>
+                <table id="product_table" class="table table-responsive table-condensed">
+                    <thead>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </thead>
+                </table>
+            </div>
+            <hr>
+            <div class="text-center mt-5">
+                <span class="h3">Create Product</span>
+                <table class="table">
+                    <form onsubmit="create_product()">
+                        <tr>
+                            <td><label class="form-group">Enter Product:</label></td>
+                            <td><input type="text" id="name" placeholder="Enter Product Name" required></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-group">Enter Price::</label></td>
+                            <td><input type="number" step="0.01" id="price" placeholder="Enter Price" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" ><input type="submit" class="btn btn-success btn-block" value="Insert Product"></td>
+                        </tr>
+                    </form>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>
