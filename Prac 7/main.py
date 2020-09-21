@@ -18,7 +18,8 @@ def home():
 def create_product():
     name = request.form["name"]
     price = request.form["price"]
-    models.create_product(name, price)
+    res = models.create_product(name, price)
+    print(res)
     return redirect("/")
 
 @app.route("/delete_product", methods=["POST"])
