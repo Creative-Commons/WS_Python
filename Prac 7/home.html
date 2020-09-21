@@ -26,6 +26,8 @@
                     cell = row.insertCell();
                     cell.innerHTML = data["products"][i][key];
                 }
+                cell = row.insertCell();
+                cell.innerHTML = '<button onclick="delete_product(' + data["products"][i]["id"] +')" value="Delete">Delete</button>'
             }
         });
     }
@@ -48,9 +50,18 @@
             response => response.json()
         ).then(
             json => console.log(json))
-        get_products()
     }
-    
+
+    /* POST REQUEST */
+    function delete_product(id){
+        fetch(
+            api_url, {
+            method: "DELETE"
+        });
+    }
+
+
+
 </script>
 
 <div class="container">

@@ -1,49 +1,54 @@
 from flask import Flask, request, render_template, redirect, jsonify
-from flask_restful import Resource, Api, reqparse
-from flask_cors import CORS, cross_origin
 from flask_sqlalchemy import SQLAlchemy
 import json
 import models
 
 app = Flask(__name__)
 
-api = Api(app)
-CORS(app, support_credentials=True)
-
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///prac7.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
-parser = reqparse.RequestParser()
-parser.add_argument('name')
-parser.add_argument('price')
+@app.route('/', methods=['GET'])
+def query_records():
+    ''' SELECT '''
+    results = models.get_products()
+    products = []
+    for r in results:
+        products.append({
+            "id": r.id,
+            "name": r.name,
+            "price": r.price
+        })
 
-class ProductList(Resource):
-    def get(self):
-        results = models.get_products()
-        products = []
-        for r in results:
-            products.append({
-                "id": r.id,
-                "name": r.name,
-                "price": r.price
-            })
+    return {"products": products}
 
-        return {"products": products}
+@app.route('/', methods=['POST'])
+def create_record():
+    ''' CREATE '''
+    data = request.get_json()
+    print(data)
+    name = str(data["name"])
+    price = float(data["price"])
 
-    def post(self):
-        data = request.get_json()
-        print(data)
-        name = str(data["name"])
-        price = float(data["price"])
+    res = models.create_product(name, price)
+    print(res)
 
-        res = models.create_product(name, price)
-        print(res)
+    return str(res)
 
-        return str(res)
+@app.route('/', methods=['PUT'])
+def update_record():
+    ''' UPDATE '''
+    data = request.get_json()
+    print(data)
+    return
 
+@app.route('/', methods=['DELETE'])
+def delete_record():
+    ''' DELETE '''
+    print(data)
+    return
 
-api.add_resource(ProductList, '/')
 
 if __name__ == "__main__":
     app.run(debug=True)
