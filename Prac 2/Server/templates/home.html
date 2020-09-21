@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron text-center mt-5">
+                
+                <span class="h2 mt-5" >One-way Operation</span>
+                <hr>
+                <form class="form form-group" action="/insert_friend" method="POST">
+                    <table class="table table-bordered mt-5">
+                        <tr>
+                            <td>Enter Id:</td>
+                            <td><input class="form-group" name="id" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Enter Name:</td>
+                            <td><input class="form-group" name="name" type="text" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input class="form-group btn btn-block btn-success" type="submit" value="Insert"></td>
+                        </tr>
+                    </table>
+                </form>
+                
+                <hr>
+                
+                <span class="h2 mt-5" >Request-Response Operation</span>
+                <hr>
+                <form class="form form-group" action="/get_friend" method="POST">
+                    <table class="table table-bordered mt-5">
+                        <tr>
+                            <td>Enter Id:</td>
+                            <td><input class="form-group input-group" name="id" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input class="form-group btn btn-block btn-primary" type="submit" value="Get Friend"></td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+        </div>
+    </body>
+</html>
