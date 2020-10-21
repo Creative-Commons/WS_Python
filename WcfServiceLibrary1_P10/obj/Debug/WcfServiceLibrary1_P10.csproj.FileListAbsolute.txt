@@ -1,0 +1,7 @@
+C:\Users\nassqra\Desktop\New folder\WS_Python\WcfServiceLibrary1_P10\bin\Debug\WcfServiceLibrary1_P10.dll.config
+C:\Users\nassqra\Desktop\New folder\WS_Python\WcfServiceLibrary1_P10\bin\Debug\WcfServiceLibrary1_P10.dll
+C:\Users\nassqra\Desktop\New folder\WS_Python\WcfServiceLibrary1_P10\bin\Debug\WcfServiceLibrary1_P10.pdb
+C:\Users\nassqra\Desktop\New folder\WS_Python\WcfServiceLibrary1_P10\obj\Debug\WcfServiceLibrary1_P10.csprojAssemblyReference.cache
+C:\Users\nassqra\Desktop\New folder\WS_Python\WcfServiceLibrary1_P10\obj\Debug\WcfServiceLibrary1_P10.csproj.CoreCompileInputs.cache
+C:\Users\nassqra\Desktop\New folder\WS_Python\WcfServiceLibrary1_P10\obj\Debug\WcfServiceLibrary1_P10.dll
+C:\Users\nassqra\Desktop\New folder\WS_Python\WcfServiceLibrary1_P10\obj\Debug\WcfServiceLibrary1_P10.pdb
