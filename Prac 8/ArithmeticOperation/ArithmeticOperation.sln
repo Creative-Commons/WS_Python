@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticOperation", "ArithmeticOperation.csproj", "{F09514DB-C4FD-4AAF-B609-1899310A582D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticClient", "..\ArithmeticClient\ArithmeticClient.csproj", "{C681D270-705D-4BE2-8C80-51D02F348CF7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F09514DB-C4FD-4AAF-B609-1899310A582D} = {F09514DB-C4FD-4AAF-B609-1899310A582D}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F09514DB-C4FD-4AAF-B609-1899310A582D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F09514DB-C4FD-4AAF-B609-1899310A582D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F09514DB-C4FD-4AAF-B609-1899310A582D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F09514DB-C4FD-4AAF-B609-1899310A582D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C681D270-705D-4BE2-8C80-51D02F348CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C681D270-705D-4BE2-8C80-51D02F348CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C681D270-705D-4BE2-8C80-51D02F348CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C681D270-705D-4BE2-8C80-51D02F348CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {132686EF-A79E-4665-8B5F-67071B6BC888}
+	EndGlobalSection
+EndGlobal

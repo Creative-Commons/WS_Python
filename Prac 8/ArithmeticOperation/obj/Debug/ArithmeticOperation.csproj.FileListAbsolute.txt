@@ -1,0 +1,7 @@
+C:\Users\nassqra\Desktop\ws_p8\ArithmeticOperation\bin\ArithmeticOperation.dll.config
+C:\Users\nassqra\Desktop\ws_p8\ArithmeticOperation\bin\ArithmeticOperation.dll
+C:\Users\nassqra\Desktop\ws_p8\ArithmeticOperation\bin\ArithmeticOperation.pdb
+C:\Users\nassqra\Desktop\ws_p8\ArithmeticOperation\obj\Debug\ArithmeticOperation.csprojAssemblyReference.cache
+C:\Users\nassqra\Desktop\ws_p8\ArithmeticOperation\obj\Debug\ArithmeticOperation.csproj.CoreCompileInputs.cache
+C:\Users\nassqra\Desktop\ws_p8\ArithmeticOperation\obj\Debug\ArithmeticOperation.dll
+C:\Users\nassqra\Desktop\ws_p8\ArithmeticOperation\obj\Debug\ArithmeticOperation.pdb
